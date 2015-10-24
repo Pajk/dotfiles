@@ -57,7 +57,7 @@ set tabstop=2
 set cursorline "highlight cursor line
 set ignorecase "case-insensitive searching
 set visualbell "turn off audio beeps
-set list listchars=tab:»·,trail:· " show extra space characters
+set list listchars=tab:>-
 hi CursorLine cterm=NONE ctermbg=black
 
 " Enable omni completion (<C-X><C-O> when in Insert mode)
