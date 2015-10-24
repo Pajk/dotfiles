@@ -18,6 +18,8 @@ Plugin 'marijnh/tern_for_vim'
 Plugin 'rking/ag.vim'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'kchmck/vim-coffee-script'
+Plugin 'Shougo/neocomplete.vim'
+Plugin 'bling/vim-airline'
 
 " snippets
 Plugin 'MarcWeber/vim-addon-mw-utils'
@@ -25,6 +27,8 @@ Plugin 'tomtom/tlib_vim'
 Plugin 'garbas/vim-snipmate'
 Plugin 'honza/vim-snippets'
 Plugin 'tpope/vim-obsession'
+" Plugin 'weynhamz/vim-plugin-minibufexpl'
+Plugin 'bling/vim-bufferline'
 
 call vundle#end()
 filetype plugin indent on "enable filetype detection
@@ -59,9 +63,6 @@ set ignorecase "case-insensitive searching
 set visualbell "turn off audio beeps
 set list listchars=tab:>-
 hi CursorLine cterm=NONE ctermbg=black
-
-" Enable omni completion (<C-X><C-O> when in Insert mode)
-set omnifunc=syntaxcomplete#Complete
 
 " Autocomplete behavior - complete as you type, use Enter to select
 set completeopt=longest,menuone
@@ -134,6 +135,29 @@ nmap <CR><CR> o<Esc>
 
 " create a new dir and file with E command
 command -nargs=1 E execute 'silent! !mkdir -p "$(dirname "<args>")"' <Bar> e <args>
+
+" popup color
+highlight Pmenu ctermbg=238 gui=bold
+
+" neocomplete setup
+let g:neocomplete#enable_at_startup = 1
+let g:neocomplete#enable_smart_case = 1
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+"autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType javascript setl omnifunc=tern#Complete
+if !exists('g:neocomplete#force_omni_input_patterns')
+  let g:neocomplete#force_omni_input_patterns = {}
+endif
+let g:neocomplete#force_omni_input_patterns.javascript = '[^. \t]\.\w*'
+
+" airline tab settings, note: you have to use font patched for powerline
+" (eg. menlo or monaco for powerline)
+" let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
+
+" bufferline settings
+let g:bufferline_echo = 0 " do not show in command bar
 
 " Allow project specific vimrc
 set exrc

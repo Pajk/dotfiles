@@ -17,9 +17,13 @@ alias gib='git branch -a'
 alias gic='git commit'
 alias gica='git commit --amend'
 alias gil='git log'
-alias gill='git log --graph --pretty=oneline --abbrev-commit'
+alias gil1='git log --graph --pretty=oneline --abbrev-commit'
+alias gil2="git log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all"
+alias gil3="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all"
+
 alias pull='git fetch && git rebase origin/$(git branch 2>/dev/null | grep '^*' | colrm 1 2)'
 alias p=pull
+alias xp='gia . && gic && pull'
 alias push='git push'
 alias gia='git add'
 alias gir='git reset'
