@@ -20,15 +20,17 @@ Plugin 'leafgarland/typescript-vim'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'Shougo/neocomplete.vim'
 Plugin 'bling/vim-airline'
+Plugin 'tpope/vim-obsession'
+Plugin 'bling/vim-bufferline'
+Plugin 'ervandew/supertab'
+Plugin 'scrooloose/syntastic'
+Plugin 'pangloss/vim-javascript'
 
 " snippets
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
 Plugin 'garbas/vim-snipmate'
 Plugin 'honza/vim-snippets'
-Plugin 'tpope/vim-obsession'
-" Plugin 'weynhamz/vim-plugin-minibufexpl'
-Plugin 'bling/vim-bufferline'
 
 call vundle#end()
 filetype plugin indent on "enable filetype detection
@@ -130,6 +132,9 @@ map <Leader>g :TernDef<CR>
 " double j to escape!
 imap jj <Esc>
 
+nmap 0 ^
+nmap ^ <Home>
+
 " insert new line on double enter
 nmap <CR><CR> o<Esc>
 
@@ -149,7 +154,7 @@ autocmd FileType javascript setl omnifunc=tern#Complete
 if !exists('g:neocomplete#force_omni_input_patterns')
   let g:neocomplete#force_omni_input_patterns = {}
 endif
-let g:neocomplete#force_omni_input_patterns.javascript = '[^. \t]\.\w*'
+"let g:neocomplete#force_omni_input_patterns.javascript = '[^. \t]\.\w*'
 
 " airline tab settings, note: you have to use font patched for powerline
 " (eg. menlo or monaco for powerline)
@@ -158,6 +163,20 @@ let g:airline_powerline_fonts = 1
 
 " bufferline settings
 let g:bufferline_echo = 0 " do not show in command bar
+
+" supertab
+let g:SuperTabDefaultCompletionType = "<c-n>"
+
+" syntastic settings
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_javascript_checkers = [ 'eslint' ]
+let g:syntastic_javascript_eslint_exec = 'eslint_d'
 
 " Allow project specific vimrc
 set exrc
