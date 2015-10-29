@@ -25,12 +25,14 @@ Plugin 'bling/vim-bufferline'
 Plugin 'ervandew/supertab'
 Plugin 'scrooloose/syntastic'
 Plugin 'pangloss/vim-javascript'
+Plugin 'scrooloose/nerdtree'
 
 " snippets
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
 Plugin 'garbas/vim-snipmate'
 Plugin 'honza/vim-snippets'
+Plugin 'rizzatti/dash.vim'
 
 call vundle#end()
 filetype plugin indent on "enable filetype detection
@@ -45,7 +47,6 @@ syntax enable " enable syntax highlighting
 set showmode  " shows the current mode
 set backspace=indent,eol,start "backspaces behave like backspaces
 set ruler "show cursor position in the corner
-set rnu "show line numbers
 set hlsearch "highlight search matches
 set incsearch "highlight search matches as I type
 set laststatus=2 "always show a status line at the bottom
@@ -77,9 +78,10 @@ inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 autocmd WinEnter * setlocal cursorline
 autocmd WinLeave * setlocal nocursorline
 
-autocmd InsertEnter * :set nornu
-autocmd InsertEnter * :set number
-autocmd InsertLeave * :set rnu
+set number
+"autocmd InsertEnter * :set nornu
+"autocmd InsertEnter * :set number
+"autocmd InsertLeave * :set rnu
 
 :nnoremap <F5> :buffers<CR>:buffer<Space>
 :nnoremap <C-n> :bnext<CR>
@@ -132,8 +134,19 @@ map <Leader>g :TernDef<CR>
 " double j to escape!
 imap jj <Esc>
 
+" zero to the fist char on current line
 nmap 0 ^
-nmap ^ <Home>
+
+" move in insert mode
+imap <C-a> <Esc>^
+imap <C-h> <Left>
+imap <C-j> <Down>
+imap <C-k> <Up>
+imap <C-l> <Right>
+
+" better split
+set splitbelow
+set splitright
 
 " insert new line on double enter
 nmap <CR><CR> o<Esc>
@@ -165,7 +178,7 @@ let g:airline_powerline_fonts = 1
 let g:bufferline_echo = 0 " do not show in command bar
 
 " supertab
-let g:SuperTabDefaultCompletionType = "<c-n>"
+"let g:SuperTabDefaultCompletionType = "<c-n>"
 
 " syntastic settings
 set statusline+=%#warningmsg#
@@ -177,6 +190,14 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_javascript_checkers = [ 'eslint' ]
 let g:syntastic_javascript_eslint_exec = 'eslint_d'
+
+" rename var
+nnoremap gr gd[{V%::s/<C-R>///gc<left><left><left>
+nnoremap gR gD:%s/<C-R>///gc<left><left><left>
+
+" nerdtree mapping
+map <leader>t :NERDTreeToggle<CR>
+map <leader>T :NERDTreeFind<CR>
 
 " Allow project specific vimrc
 set exrc
