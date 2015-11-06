@@ -65,6 +65,7 @@ set cursorline "highlight cursor line
 set ignorecase "case-insensitive searching
 set visualbell "turn off audio beeps
 set list listchars=tab:>-
+set smartcase
 hi CursorLine cterm=NONE ctermbg=black
 
 " Autocomplete behavior - complete as you type, use Enter to select
@@ -103,6 +104,9 @@ autocmd BufWinLeave * call clearmatches()
 
 " set leader key to comma
 let mapleader = ","
+
+" close buffer but not split window
+nmap <leader>c :b#<bar>bd#<CR>
 
 " ctrlp config
 let g:ctrlp_map = '<leader>f'
