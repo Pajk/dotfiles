@@ -21,7 +21,8 @@ Plugin 'kchmck/vim-coffee-script'
 Plugin 'Shougo/neocomplete.vim'
 Plugin 'bling/vim-airline'
 Plugin 'tpope/vim-obsession'
-Plugin 'bling/vim-bufferline'
+" Plugin 'bling/vim-bufferline'
+Plugin 'ap/vim-buftabline'
 Plugin 'ervandew/supertab'
 Plugin 'scrooloose/syntastic'
 Plugin 'pangloss/vim-javascript'
@@ -67,6 +68,7 @@ set visualbell "turn off audio beeps
 set list listchars=tab:>-
 set smartcase
 hi CursorLine cterm=NONE ctermbg=black
+set hidden
 
 " Autocomplete behavior - complete as you type, use Enter to select
 set completeopt=longest,menuone
