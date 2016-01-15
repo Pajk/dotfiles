@@ -27,6 +27,7 @@ Plugin 'ervandew/supertab'
 Plugin 'scrooloose/syntastic'
 Plugin 'pangloss/vim-javascript'
 Plugin 'scrooloose/nerdtree'
+Plugin 'airblade/vim-gitgutter'
 
 " snippets
 Plugin 'MarcWeber/vim-addon-mw-utils'
@@ -82,9 +83,9 @@ autocmd WinEnter * setlocal cursorline
 autocmd WinLeave * setlocal nocursorline
 
 set number
-"autocmd InsertEnter * :set nornu
+autocmd InsertEnter * :set nornu
 "autocmd InsertEnter * :set number
-"autocmd InsertLeave * :set rnu
+autocmd InsertLeave * :set rnu
 
 :nnoremap <F5> :buffers<CR>:buffer<Space>
 :nnoremap <C-n> :bnext<CR>
@@ -116,6 +117,10 @@ let g:ctrlp_max_height = 30
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_match_window_reversed = 0
 let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/](node_modules|coverage|doc|bower_components)$',
+  \ 'file': '\v\.(exe|so|dll)$',
+  \ }
 
 " map git commands
 map <leader>b :Gblame<cr>
@@ -192,7 +197,7 @@ set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 "let g:syntastic_always_populate_loc_list = 1
 "let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_javascript_checkers = [ 'eslint' ]
 let g:syntastic_javascript_eslint_exec = 'eslint_d'

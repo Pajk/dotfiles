@@ -1,5 +1,8 @@
 export PATH="/usr/local/bin:$PATH"
 export PATH="$HOME/Library/Haskell/bin:$PATH"
+export PATH=$PATH:/usr/local/opt/go/libexec/bin:$HOME/Developer/go/work/bin
+
+export GOPATH=/Users/pavel/Developer/go/work/
 
 # show git branch in prompt
 export PS1='\[\e[1;32m\]\w\[\e[0m\] $(git branch 2>/dev/null | grep '^*' | colrm 1 2) \$ '
@@ -61,3 +64,6 @@ function vim() {
   fi
 }
 
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+  . $(brew --prefix)/etc/bash_completion
+fi
