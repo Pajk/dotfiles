@@ -49,7 +49,8 @@ alias cc='gcc-4.8'
 alias g++='g++-4.8'
 alias c++='c++-4.8'
 
-alias flip='cd /Users/pavel/Developer/Flip/nodejs-JustFlip'
+alias flip='cd /Users/pavel/Developer/nodejs-flip'
+alias flipv='cd /Users/pavel/Developer/nodejs-flip;vim'
 
 alias t='npm test'
 
