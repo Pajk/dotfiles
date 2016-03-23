@@ -7,6 +7,9 @@ export GOPATH=/Users/pavel/Developer/go/work/
 # show git branch in prompt
 export PS1='\[\e[1;32m\]\w\[\e[0m\] $(git branch 2>/dev/null | grep '^*' | colrm 1 2) \$ '
 
+# git auctocompletion
+source ~/dotfiles/git-completion.sh
+
 # show/hide hidden files in finder
 alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
 alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
@@ -51,6 +54,7 @@ alias c++='c++-4.8'
 
 alias flip='cd /Users/pavel/Developer/nodejs-flip'
 alias flipv='cd /Users/pavel/Developer/nodejs-flip;vim'
+alias iosflip='cd /Users/pavel/Developer/ios-flip'
 
 alias t='npm test'
 
@@ -68,3 +72,6 @@ function vim() {
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
   . $(brew --prefix)/etc/bash_completion
 fi
+
+export GOPATH=$HOME/Developer/go
+
