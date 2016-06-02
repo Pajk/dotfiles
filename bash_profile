@@ -1,6 +1,6 @@
 export PATH="/usr/local/bin:$PATH"
 export PATH="$HOME/Library/Haskell/bin:$PATH"
-export PATH=$PATH:/usr/local/opt/go/libexec/bin:$HOME/Developer/go/work/bin
+export PATH=$PATH:/usr/local/opt/go/libexec/bin:$HOME/Developer/go/work/bin:/Applications/Postgres.app/Contents/Versions/9.5/bin:/Users/pavel/Developer/go/bin
 
 export GOPATH=/Users/pavel/Developer/go/work/
 
@@ -57,17 +57,18 @@ alias flipv='cd /Users/pavel/Developer/nodejs-flip;vim'
 alias iosflip='cd /Users/pavel/Developer/ios-flip'
 
 alias t='npm test'
+alias c='clear'
 
-# vim obsession ftw
-function vim() {
-  if test $# -gt 0; then
-    env vim "$@"
-  elif test -f Session.vim; then
-    env vim -S
-  else
-    env vim -c Obsession
-  fi
-}
+# vim obsession
+#function vim() {
+#  if test $# -gt 0; then
+#    env vim "$@"
+#  elif test -f Session.vim; then
+#    env vim -S
+#  else
+#    env vim -c Obsession
+#  fi
+#}
 
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
   . $(brew --prefix)/etc/bash_completion

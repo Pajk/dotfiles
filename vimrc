@@ -16,15 +16,16 @@ Plugin 'benjaminwhite/Benokai'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'marijnh/tern_for_vim'
 Plugin 'rking/ag.vim'
-Plugin 'leafgarland/typescript-vim'
-Plugin 'kchmck/vim-coffee-script'
-Plugin 'Shougo/neocomplete.vim'
+" Plugin 'leafgarland/typescript-vim'
+" Plugin 'kchmck/vim-coffee-script'
+" Plugin 'Shougo/neocomplete.vim'
+Plugin 'Valloric/YouCompleteMe'
 Plugin 'bling/vim-airline'
-Plugin 'tpope/vim-obsession'
+" Plugin 'tpope/vim-obsession'
 " Plugin 'bling/vim-bufferline'
 Plugin 'ap/vim-buftabline'
 Plugin 'ervandew/supertab'
-Plugin 'scrooloose/syntastic'
+"Plugin 'scrooloose/syntastic'
 Plugin 'pangloss/vim-javascript'
 Plugin 'scrooloose/nerdtree'
 Plugin 'airblade/vim-gitgutter'
@@ -34,16 +35,14 @@ Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
 Plugin 'garbas/vim-snipmate'
 Plugin 'honza/vim-snippets'
-Plugin 'rizzatti/dash.vim'
+" Plugin 'rizzatti/dash.vim'
 
 call vundle#end()
 filetype plugin indent on "enable filetype detection
 " Vundle end
 
 set background=dark
-"colorscheme solarized
 colorscheme Benokai
-"let g:solarized_termcolors = 256
 
 syntax enable " enable syntax highlighting
 set showmode  " shows the current mode
@@ -60,9 +59,9 @@ set wrap  "linewraps
 set scrolloff=3 "always show some lines before/after the cursor
 set title "update term title
 set expandtab "expand tabs to spaces
-set shiftwidth=2
-set softtabstop=2
-set tabstop=2
+set shiftwidth=4
+set softtabstop=4
+set tabstop=4
 set cursorline "highlight cursor line
 set ignorecase "case-insensitive searching
 set visualbell "turn off audio beeps
@@ -169,15 +168,15 @@ command -nargs=1 E execute 'silent! !mkdir -p "$(dirname "<args>")"' <Bar> e <ar
 highlight Pmenu ctermbg=238 gui=bold
 
 " neocomplete setup
-let g:neocomplete#enable_at_startup = 1
-let g:neocomplete#enable_smart_case = 1
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+"let g:neocomplete#enable_at_startup = 1
+"let g:neocomplete#enable_smart_case = 1
+"autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+"autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 "autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType javascript setl omnifunc=tern#Complete
-if !exists('g:neocomplete#force_omni_input_patterns')
-  let g:neocomplete#force_omni_input_patterns = {}
-endif
+"autocmd FileType javascript setl omnifunc=tern#Complete
+"if !exists('g:neocomplete#force_omni_input_patterns')
+"  let g:neocomplete#force_omni_input_patterns = {}
+"endif
 "let g:neocomplete#force_omni_input_patterns.javascript = '[^. \t]\.\w*'
 
 " airline tab settings, note: you have to use font patched for powerline
@@ -197,10 +196,10 @@ set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 "let g:syntastic_always_populate_loc_list = 1
 "let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-let g:syntastic_javascript_checkers = [ 'eslint' ]
-let g:syntastic_javascript_eslint_exec = 'eslint_d'
+"let g:syntastic_check_on_open = 0
+"let g:syntastic_check_on_wq = 0
+"let g:syntastic_javascript_checkers = [ 'eslint' ]
+"let g:syntastic_javascript_eslint_exec = 'eslint_d'
 
 " rename var
 nnoremap gr gd[{V%::s/<C-R>///gc<left><left><left>
@@ -209,6 +208,8 @@ nnoremap gR gD:%s/<C-R>///gc<left><left><left>
 " nerdtree mapping
 map <leader>t :NERDTreeToggle<CR>
 map <leader>T :NERDTreeFind<CR>
+
+highlight Comment cterm=italic
 
 " Allow project specific vimrc
 set exrc
